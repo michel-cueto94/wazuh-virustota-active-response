@@ -22,7 +22,7 @@ Salida del comando sudo docker exec -it single-node-wazuh.manager-1 grep -iE "in
 
 La causa se ubicó en el archivo docker-compose.yml, que monta config/wazuh_cluster/wazuh_manager.conf sobre el ossec.conf del contenedor en cada arranque, sobrescribiendo los cambios realizados en el volumen. La corrección consistió en modificar el archivo de origen del montaje. Tras reiniciar el contenedor, el registro confirmó la habilitación de la integración.
 
-CAPTURA 2 (la solución): terminal con el comando grep -n -A6 "<integration>" mostrando el bloque cargado en el ossec.conf del contenedor (con la clave de API oculta) y, a continuación, las líneas wazuh-integratord: INFO: Started y Enabling integration for: 'virustotal'.
+Terminal con el comando grep -n -A6 "<integration>" mostrando el bloque cargado en el ossec.conf del contenedor (con la clave de API oculta) y, a continuación, las líneas wazuh-integratord: INFO: Started y Enabling integration for: 'virustotal'.
 <img width="1058" height="566" alt="Captura de pantalla 2026-10-12 192033" src="https://github.com/user-attachments/assets/a47acd67-ce3b-4bfa-bc9d-31a4be1786a2" />
 
 4.2 Verificación de conectividad
@@ -54,17 +54,17 @@ Archivo ossec.conf del agente Windows con el bloque <syscheck> y la línea <dire
 
 Archivo de texto sin antecedentes. La creación de un archivo de texto genérico generó la alerta 87103 (No records in VirusTotal database). Es el resultado esperado, dado que el hash del archivo nunca fue registrado en VirusTotal.
 
-CAPTURA 6: alerta del dashboard con rule.id: 87103 y data.virustotal.source.file correspondiente a prueba1.txt.
+
 
 Archivo EICAR. Su creación generó la alerta 87105, de nivel 12, con 63 de 67 motores de detección, asociada a la técnica T1203 de MITRE ATT&CK. Para esta prueba se excluyó la carpeta del análisis de Windows Defender, dado que de otro modo el antivirus eliminaba el archivo antes de su procesamiento por Wazuh. Esta exclusión solo es admisible en un entorno de laboratorio.
 
-CAPTURA 7: alerta rule.id: 87105 expandida, con data.virustotal.positives: 63, data.virustotal.total: 67, data.virustotal.source.file (eicar) y la técnica MITRE T1203.
+
 
 
 
 <img width="1122" height="309" alt="Captura de pantalla 2026-10-12 202504" src="https://github.com/user-attachments/assets/26cf0c85-e5f2-49e6-869e-6504976df1fa" />
 
-CAPTURA 8: alerta rule.id: 554 (File added to the system) del mismo archivo, como primer eslabón de la cadena.
+Alerta rule.id: 554 (File added to the system) del mismo archivo, como primer eslabón de la cadena.
 
 <img width="1142" height="264" alt="Captura de pantalla 2026-10-12 202526" src="https://github.com/user-attachments/assets/79f9bd4f-db11-48f5-9aac-ae52afaf003c" />
 
