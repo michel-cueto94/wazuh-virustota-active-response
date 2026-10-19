@@ -1,0 +1,1 @@
+# wazuh-virustota-active-response
