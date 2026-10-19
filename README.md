@@ -1,5 +1,3 @@
-<img width="729" height="61" alt="Captura de pantalla 2026-10-12 184157" src="https://github.com/user-attachments/assets/39c1dcfa-57f7-47b7-bb32-cff54527c587" /><img width="1590" height="645" alt="Captura de pantalla 2026-10-12 192421" src="https://github.com/user-attachments/assets/fb7faf4f-d535-40c4-aefa-132012ea5562" /><img width="1058" height="566" alt="Captura de pantalla 2026-10-12 192033" src="https://github.com/user-attachments/assets/c4c35a63-3c62-4a6d-916f-3b6a40d97f4b" />Integración de Wazuh con VirusTotal y respuesta activa automatizada
-1. Introducción
 
 El presente documento describe la implementación de un flujo de detección, enriquecimiento y respuesta ante amenazas en un entorno de laboratorio, utilizando Wazuh como plataforma SIEM/XDR. El esquema contempla el monitoreo de integridad de archivos (FIM) en un servidor Windows, la consulta automática de la reputación de cada archivo mediante la API de VirusTotal y la eliminación automática de aquellos clasificados como maliciosos.
 
