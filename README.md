@@ -120,12 +120,19 @@ if ($file -and (Test-Path -LiteralPath $file)) {
 Posteriormente se actualizó el campo <executable> del manager a remove-threat.cmd, se reiniciaron el contenedor y el agente, y se repitió la prueba con un nuevo archivo EICAR. El archivo fue eliminado a los pocos segundos.
 
 
-<img width="957" height="86" alt="Captura de pantalla 2026-10-19 210711" src="https://github.com/user-attachments/assets/370446e6-22d6-4a28-941a-55dc0fe76e5a" />
+<img width="936" height="71" alt="Captura de pantalla 2026-10-20 013828" src="https://github.com/user-attachments/assets/04c69216-6052-4f8d-8690-d961adde57d6" />
+
 
 
 
 
 El registro también evidenció una segunda ejecución con el mensaje de archivo no encontrado. No constituye un error: la regla puede activarse más de una vez para un mismo archivo; la primera ejecución lo elimina y la segunda ya no lo localiza.
+
+
+
+
+<img width="929" height="156" alt="Captura de pantalla 2026-10-20 013936" src="https://github.com/user-attachments/assets/0bacd996-c6b3-47f5-947b-7ed343bd86d8" />
+
 
 ## 5. Resultado
 
