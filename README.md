@@ -73,21 +73,6 @@ La secuencia verificada fue: detección por syscheck (alerta 554), consulta a Vi
 En el manager se definieron un comando y una respuesta activa asociados a la regla 87105, con location en local, de modo que el script se ejecute en el agente que originó la alerta. Se seleccionó la regla 87105 y no la 87103 para evitar la eliminación de archivos que VirusTotal simplemente no conoce.
 
 
-```xml
-<command>
-  <name>remove-threat</name>
-  <executable>remove-threat.cmd</executable>
-  <timeout_allowed>no</timeout_allowed>
-</command>
-
-<active-response>
-  <disabled>no</disabled>
-  <command>remove-threat</command>
-  <location>local</location>
-  <rules_id>87105</rules_id>
-</active-response>
-```
-
 
 <img width="1012" height="297" alt="Captura de pantalla 2026-10-19 210747" src="https://github.com/user-attachments/assets/6fc280db-f4ea-497f-a4ed-94a027c88738" />
 
