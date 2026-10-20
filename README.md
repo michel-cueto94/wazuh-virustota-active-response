@@ -95,20 +95,21 @@ En el manager se definieron un comando y una respuesta activa asociados a la reg
 
 En esta etapa se presentaron dos inconvenientes:
 
-Bloques fuera de </ossec_config>. La configuración se había ubicado después de la etiqueta de cierre y no era cargada. Se reubicó dentro del bloque principal y se validó la sintaxis con xmllint --noout.
-Ejecutable inexistente en el agente. Las alertas 554 y 87105 se generaban, pero el archivo no se eliminaba. El ossec.log del agente registraba Active response command not present: 'active-response/bin/remove-threat.exe'. El agente instalado no incluía dicho ejecutable: la carpeta contenía únicamente netsh.exe, restart-wazuh.exe y route-null.exe.
+- **Bloques fuera de `</ossec_config>`.** La configuración se había ubicado después de la etiqueta de cierre y no era cargada. Se reubicó dentro del bloque principal y se validó la sintaxis con `xmllint --noout`.
+- **Ejecutable inexistente en el agente.** Las alertas 554 y 87105 se generaban, pero el archivo no se eliminaba. El `ossec.log` del agente registraba `Active response command not present: 'active-response/bin/remove-threat.exe'`. El agente instalado no incluía dicho ejecutable: la carpeta contenía únicamente `netsh.exe`, `restart-wazuh.exe` y `route-null.exe`.
 
-Como solución se desarrolló un script propio, compuesto por dos archivos ubicados en C:\Program Files (x86)\ossec-agent\active-response\bin\:
+Como solución se desarrolló un script propio, compuesto por dos archivos ubicados en `C:\Program Files (x86)\ossec-agent\active-response\bin\`.
 
-remove-threat.cmd, que invoca a PowerShell:
+`remove-threat.cmd`, que invoca a PowerShell:
 
-bat
+```bat
 @echo off
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "%~dp0remove-threat.ps1"
+```
 
-remove-threat.ps1, que lee por entrada estándar el JSON de la alerta, obtiene la ruta del campo data.virustotal.source.file, elimina el archivo y registra el resultado en active-responses.log:
+`remove-threat.ps1`, que lee por entrada estándar el JSON de la alerta, obtiene la ruta del campo `data.virustotal.source.file`, elimina el archivo y registra el resultado en `active-responses.log`:
 
-powershell
+```powershell
 $logfile = "C:\Program Files (x86)\ossec-agent\active-response\active-responses.log"
 $inputJson = [Console]::In.ReadLine() | ConvertFrom-Json
 $file = $inputJson.parameters.alert.data.virustotal.source.file
@@ -127,6 +128,8 @@ if ($file -and (Test-Path -LiteralPath $file)) {
 } else {
   Log "File already removed or not found: $file"
 }
+```
+
 
 Posteriormente se actualizó el campo <executable> del manager a remove-threat.cmd, se reiniciaron el contenedor y el agente, y se repitió la prueba con un nuevo archivo EICAR. El archivo fue eliminado a los pocos segundos.
 
