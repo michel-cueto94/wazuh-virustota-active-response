@@ -141,24 +141,29 @@ Posteriormente se actualizó el campo <executable> del manager a remove-threat.c
 
 El registro también evidenció una segunda ejecución con el mensaje de archivo no encontrado. No constituye un error: la regla puede activarse más de una vez para un mismo archivo; la primera ejecución lo elimina y la segunda ya no lo localiza.
 
-5. Resultado
+## 5. Resultado
 
 Se logró un flujo completamente automatizado: la aparición de un archivo en la carpeta monitoreada es detectada en tiempo real, su hash es evaluado por VirusTotal y, si resulta clasificado como malicioso, el agente lo elimina sin intervención manual.
 
-6. - **Limitaciones**
-Eliminación sin cuarentena. Un falso positivo de VirusTotal implicaría la pérdida de un archivo legítimo. En un entorno productivo corresponde aplicar un umbral mínimo de detecciones o mover el archivo a cuarentena.
-Cobertura reducida. Solo se monitorea la carpeta Downloads.
-Consulta por hash. El malware nuevo o modificado devuelve resultados sin registros.
-Cuota de la API gratuita. Se limita a 4 consultas por minuto.
-Confirmación en el dashboard. La eliminación se comprueba en el registro del agente, pero no se configuró una alerta propia en el dashboard que la confirme.
-7. - **Conclusiones**
-Se comprendió el comportamiento de Wazuh sobre Docker con montajes de archivos, y la razón por la cual las modificaciones directas en el volumen no persisten.
-El diagnóstico requirió el análisis de los registros en ambos extremos: manager y agente.
-Se diferenciaron los resultados de reputación desconocida (87103) y maliciosa (87105).
-La ausencia del ejecutable remove-threat.exe resultó de asumir su existencia sin verificarlo previamente en el agente.
-Se evidenciaron los riesgos de automatizar respuestas destructivas sin umbrales ni cuarentena.
-8.  - **Mejoras propuestas**
-Mover los archivos a cuarentena en lugar de eliminarlos.
-Exigir un mínimo de detecciones antes de ejecutar la respuesta.
-Incorporar una regla propia que registre la eliminación como alerta en el dashboard.
-Incorporar Sysmon para detectar también ejecuciones, además de la creación de archivos.
+## 6. Limitaciones
+
+- **Eliminación sin cuarentena.** Un falso positivo de VirusTotal implicaría la pérdida de un archivo legítimo. En un entorno productivo corresponde aplicar un umbral mínimo de detecciones o mover el archivo a cuarentena.
+- **Cobertura reducida.** Solo se monitorea la carpeta Downloads.
+- **Consulta por hash.** El malware nuevo o modificado devuelve resultados sin registros.
+- **Cuota de la API gratuita.** Se limita a 4 consultas por minuto.
+- **Confirmación en el dashboard.** La eliminación se comprueba en el registro del agente, pero no se configuró una alerta propia en el dashboard que la confirme.
+
+## 7. Conclusiones
+
+- Se comprendió el comportamiento de Wazuh sobre Docker con montajes de archivos, y la razón por la cual las modificaciones directas en el volumen no persisten.
+- El diagnóstico requirió el análisis de los registros en ambos extremos: manager y agente.
+- Se diferenciaron los resultados de reputación desconocida (87103) y maliciosa (87105).
+- La ausencia del ejecutable `remove-threat.exe` resultó de asumir su existencia sin verificarlo previamente en el agente.
+- Se evidenciaron los riesgos de automatizar respuestas destructivas sin umbrales ni cuarentena.
+
+## 8. Mejoras propuestas
+
+- Mover los archivos a cuarentena en lugar de eliminarlos.
+- Exigir un mínimo de detecciones antes de ejecutar la respuesta.
+- Incorporar una regla propia que registre la eliminación como alerta en el dashboard.
+- Incorporar Sysmon para detectar también ejecuciones, además de la creación de archivos.
