@@ -38,12 +38,10 @@ Desde el contenedor se verificó la salida a internet mediante una consulta con 
 Se conectó el agente Windows al manager y se configuró el monitoreo de la carpeta Downloads:
 
 
- <syscheck>
-  <disabled>no</disabled>
-  <frequency>43200</frequency>
-  <scan_on_start>yes</scan_on_start>
-  <directories realtime="yes" check_all="yes">C:\Users\Administrador\Downloads</directories>
-</syscheck>
+<img width="592" height="123" alt="Captura de pantalla 2026-10-20 011403" src="https://github.com/user-attachments/assets/f946f772-1665-4d2d-b076-3f8e8bf37dad" />
+
+
+
 
 La opción realtime="yes" permite detectar los cambios de forma inmediata, sin esperar al escaneo periódico. Previamente, las únicas alertas disponibles correspondían al propio manager, por lo que la integración no se activaba: esta responde exclusivamente a alertas de FIM.
 
@@ -71,18 +69,12 @@ La secuencia verificada fue: detección por syscheck (alerta 554), consulta a Vi
 En el manager se definieron un comando y una respuesta activa asociados a la regla 87105, con location en local, de modo que el script se ejecute en el agente que originó la alerta. Se seleccionó la regla 87105 y no la 87103 para evitar la eliminación de archivos que VirusTotal simplemente no conoce.
 
 
-<command>
-  <name>remove-threat</name>
-  <executable>remove-threat.cmd</executable>
-  <timeout_allowed>no</timeout_allowed>
-</command>
 
-<active-response>
-  <disabled>no</disabled>
-  <command>remove-threat</command>
-  <location>local</location>
-  <rules_id>87105</rules_id>
-</active-response>
+<img width="306" height="107" alt="Captura de pantalla 2026-10-20 011325" src="https://github.com/user-attachments/assets/1ceabc87-8504-42ff-bf94-adf5a86b2431" />
+
+
+
+<img width="286" height="139" alt="Captura de pantalla 2026-10-20 011346" src="https://github.com/user-attachments/assets/3e0f0ceb-1187-4cca-ba95-eb246f7178d4" />
 
 
 <img width="1012" height="297" alt="Captura de pantalla 2026-10-19 210747" src="https://github.com/user-attachments/assets/6fc280db-f4ea-497f-a4ed-94a027c88738" />
