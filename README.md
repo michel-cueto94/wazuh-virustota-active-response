@@ -112,7 +112,7 @@ if ($file -and (Test-Path -LiteralPath $file)) {
     Log "Error removing threat: $file - $($_.Exception.Message)"
   }
 } else {
-  Log "File already removed or not found: $file"
+  Log "Error removing threat: file not found: $file"
 }
 ```
 
