@@ -48,7 +48,8 @@ xml
 La opción realtime="yes" permite detectar los cambios de forma inmediata, sin esperar al escaneo periódico. Previamente, las únicas alertas disponibles correspondían al propio manager, por lo que la integración no se activaba: esta responde exclusivamente a alertas de FIM.
 
 
-<img width="797" height="207" alt="Captura de pantalla 2026-10-12 184730" src="https://github.com/user-attachments/assets/9c640cd6-cf0a-4558-946b-3726f07b30e7" />
+<img width="797" height="207" alt="Captura de pantalla 2026-10-12 184730" src="https://github.com/user-attachments/assets/bf333e89-f792-4f92-9fc3-b04dfa10ac59" />
+
 
 
 
