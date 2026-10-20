@@ -37,10 +37,14 @@ Desde el contenedor se verificó la salida a internet mediante una consulta con 
 
 Se conectó el agente Windows al manager y se configuró el monitoreo de la carpeta Downloads:
 
-
-<img width="592" height="123" alt="Captura de pantalla 2026-10-20 011403" src="https://github.com/user-attachments/assets/f946f772-1665-4d2d-b076-3f8e8bf37dad" />
-
-
+```xml
+<syscheck>
+  <disabled>no</disabled>
+  <frequency>43200</frequency>
+  <scan_on_start>yes</scan_on_start>
+  <directories realtime="yes" check_all="yes">C:\Users\Administrador\Downloads</directories>
+</syscheck>
+```
 
 
 La opción realtime="yes" permite detectar los cambios de forma inmediata, sin esperar al escaneo periódico. Previamente, las únicas alertas disponibles correspondían al propio manager, por lo que la integración no se activaba: esta responde exclusivamente a alertas de FIM.
