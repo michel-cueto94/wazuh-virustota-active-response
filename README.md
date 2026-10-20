@@ -14,6 +14,7 @@ Endpoint	Windows Server con agente Wazuh
 Inteligencia de amenazas	API de VirusTotal (cuenta gratuita)
 Archivo de prueba	EICAR, archivo estándar de prueba para antivirus, no dañino
 4. Desarrollo
+
 4.1 Configuración de la integración con VirusTotal
 
 En el manager se incorporó un bloque <integration> con el nombre virustotal, la clave de API y el grupo syscheck. De este modo, cada alerta generada por el monitoreo de integridad de archivos provoca una consulta del hash correspondiente en VirusTotal.
