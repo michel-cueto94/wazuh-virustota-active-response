@@ -131,7 +131,8 @@ El registro también evidenció una segunda ejecución con el mensaje de archivo
 
 
 
-<img width="929" height="156" alt="Captura de pantalla 2026-10-20 013936" src="https://github.com/user-attachments/assets/0bacd996-c6b3-47f5-947b-7ed343bd86d8" />
+<img width="948" height="136" alt="Captura de pantalla 2026-10-20 014031" src="https://github.com/user-attachments/assets/20e7adb5-5eaa-4359-bfec-40ac19665d4c" />
+
 
 
 ## 5. Resultado
