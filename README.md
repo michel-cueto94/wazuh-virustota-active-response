@@ -38,7 +38,7 @@ Desde el contenedor se verificó la salida a internet mediante una consulta con 
 Se conectó el agente Windows al manager y se configuró el monitoreo de la carpeta Downloads:
 
 
-<syscheck>
+ <syscheck>
   <disabled>no</disabled>
   <frequency>43200</frequency>
   <scan_on_start>yes</scan_on_start>
