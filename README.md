@@ -37,7 +37,7 @@ Desde el contenedor se verificó la salida a internet mediante una consulta con 
 
 Se conectó el agente Windows al manager y se configuró el monitoreo de la carpeta Downloads:
 
-xml
+
 <syscheck>
   <disabled>no</disabled>
   <frequency>43200</frequency>
@@ -70,7 +70,7 @@ La secuencia verificada fue: detección por syscheck (alerta 554), consulta a Vi
 
 En el manager se definieron un comando y una respuesta activa asociados a la regla 87105, con location en local, de modo que el script se ejecute en el agente que originó la alerta. Se seleccionó la regla 87105 y no la 87103 para evitar la eliminación de archivos que VirusTotal simplemente no conoce.
 
-xml
+
 <command>
   <name>remove-threat</name>
   <executable>remove-threat.cmd</executable>
